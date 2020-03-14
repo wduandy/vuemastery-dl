@@ -8,21 +8,21 @@ if (process.argv.length < 3) {
 }
 
 // Default APP ID is 122963
-startDownloadByUrl(process.argv[2])
+startDownloadByUrl(process.argv[2]);
 
 async function startDownloadByUrl(playerUrl) {
     try {
-        var pageData = await getVimeoPage(playerUrl)
+        var pageData = await getVimeoPage(playerUrl);
         var masterUrl = pageData.masterUrl;
         var courseTitle = pageData.title;
     } catch (e) {
-        console.log('Error On video:' + vID);
+        console.log('Error On video:' + playerUrl);
         console.error(e);
         return;
     }
 
     if (masterUrl.length === 0) {
-        console.log('Error On video:' + vID);
+        console.log('Error On video:' + playerUrl);
         console.log('Cannot get Master url!');
         return;
     }
