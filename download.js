@@ -1,21 +1,18 @@
 const fs = require('fs');
 const url = require('url');
 const https = require('https');
-// const { exec } = require("child_process");
 
 if (process.argv.length < 3) {
     console.log(`Usage: node download.js {Video LINK}(You can find Video LINK by Browser.getCurrentVideoID.js)`);
     return;
 }
-let id = process.argv[2];
-id = id.replace('https://player.vimeo.com/video/', '').replace('?', '').replace('autoplay=1', '').replace(/[&?]/gm, '').replace(/app_id=(.*)/gm, '');
 
 // Default APP ID is 122963
-startDownloadByID(id, 122963)
+startDownloadByUrl(process.argv[2])
 
-async function startDownloadByID(vID, appID) {
+async function startDownloadByUrl(playerUrl) {
     try {
-        var pageData = await getVimeoPageByID(vID, appID)
+        var pageData = await getVimeoPage(playerUrl)
         var masterUrl = pageData.masterUrl;
         var courseTitle = pageData.title;
     } catch (e) {
@@ -51,16 +48,14 @@ async function startDownloadByID(vID, appID) {
                     throw err;
                 }
             });
-            // Merge movies
-            // exec('ffmpeg -i '+json.clip_id+'.m4v -i '+json.clip_id+'.m4a -acodec copy -vcodec copy '+json.clip_id+'.mp4');
         });
     });
 
 }
 
-async function getVimeoPageByID(id, appID) {
+async function getVimeoPage(playerUrl) {
     return new Promise(function (resolve, reject) {
-        https.get('https://player.vimeo.com/video/' + id + '?autoplay=1&app_id=' + appID, res => {
+        https.get(playerUrl, res => {
             res.setEncoding("utf8");
             let body = "";
             res.on("data", data => {
