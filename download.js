@@ -19,7 +19,7 @@ async function startDownloadByID(vID, quality, appID) {
         let pageData = await getVimeoPageByID(vID, quality, appID)
         let videoURL = pageData.videoURL;
         let courseTitle = pageData.title || vID;
-        let fileName = courseTitle.replace(/[^a-zA-Z0-9 ]/g, "") + '.mp4';
+        let fileName = courseTitle.replace(/[^a-zA-Z0-9 ]/g, '-') + '.mp4';
 
         if (videoURL !== null) {
             console.log(courseTitle + ', Downloading...');
