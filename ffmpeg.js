@@ -15,11 +15,10 @@ fs.readdir(directoryPath, function (e, files) {
         console.error(e)
     } else {
         files.forEach(function (file) {
-            fs.is
             if (file.endsWith('.m4v')) {
                 file = file.replace('.m4v','');
                 exec('ffmpeg -i ' + directoryPath + `/${file}.m4v -i ` + directoryPath + `/${file}.m4a -acodec copy -vcodec copy ` + directoryPath + `/${file}.mp4`);
             }
         })
     }
-})
+});

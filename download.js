@@ -93,7 +93,10 @@ function findTitle(str) {
     const VIMEO_NAME = "on Vimeo"
     let title = str.match(/<title.*?>(.*)<\/title>/)[1];
     if (title) {
-        return title.split(VIMEO_NAME)[0].trim();
+        return title.split(VIMEO_NAME)[0].trim().
+        replace('/','').
+        replace(':','').
+        replace('?','');
     } else {
         return null;
     }

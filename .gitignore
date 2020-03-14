@@ -1,5 +1,7 @@
 ./*.m4
+*.m4v
+*.m4a
+*.mp4
 Web
 .DS_Store
-mirror.js
-data
+.idea
