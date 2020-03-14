@@ -26,7 +26,7 @@ async function startDownloadByUrl(playerUrl) {
         console.log('Cannot get Master url!');
         return;
     }
-    console.log(`Start Proccess on:` + masterUrl);
+    console.log(`Start Process on:` + masterUrl);
     getJson(masterUrl, (err, json) => {
         if (err) {
             throw err;
