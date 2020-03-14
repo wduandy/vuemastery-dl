@@ -16,13 +16,14 @@ startDownloadByID(id, quality, 122963)
 
 async function startDownloadByID(vID, quality, appID) {
     try {
-        var pageData = await getVimeoPageByID(vID, quality, appID)
-        var videoURL = pageData.videoURL;
-        var courseTitle = pageData.title || vID;
+        let pageData = await getVimeoPageByID(vID, quality, appID)
+        let videoURL = pageData.videoURL;
+        let courseTitle = pageData.title || vID;
+        let fileName = courseTitle.replace(/[^a-zA-Z0-9 ]/g, "") + '.mp4';
 
         if (videoURL !== null) {
             console.log(courseTitle + ', Downloading...');
-            await downloadFile(videoURL, courseTitle + '.mp4').then(function gotData(data) {
+            await downloadFile(videoURL, fileName).then(function gotData(data) {
                 console.log(courseTitle + ', Download Complete.');
             }, reason => {
                 console.log('Error, ' + reason);
@@ -86,7 +87,6 @@ function findVideoUrl(str, quality) {
             let config = res[0].replace('config = ', '');
             config = JSON.parse(config);
             let progressive = config.request.files.progressive, videoURL;
-
             for (let item of progressive) {
                 videoURL = item.url;
                 if (quality + 'p' === item.quality)
