@@ -1,5 +1,5 @@
 # vuemastery-dl
-vuemastery dowloader
+vuemastery video downloader
 
 * Open a lesson on browser
 * Run this code on browser console `document.getElementsByTagName('iframe')[0].src` to get {Video LINK}
@@ -9,5 +9,3 @@ vuemastery dowloader
 ## Group Download
 * first `cd data/ANY_DIRRECTORY` like `cd data/advanced-components`
 * download a directory with `node ../../mirror.js`
-
-#### Bypass firebase in progress!
