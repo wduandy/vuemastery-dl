@@ -9,3 +9,7 @@ vuemastery video downloader
 ## Download Group
 * first `cd data/ANY_DIRRECTORY` like `cd data/advanced-components`
 * download a directory with `node ../../mirror.js`
+
+
+# PR
+Please add new video links to data folder for others and open a new PR to this project
