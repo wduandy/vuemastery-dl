@@ -12,4 +12,4 @@ vuemastery video downloader
 
 
 # PR
-Please put new video links to the data folder to help others, If you still have access to videos
+Please put new video links to the data folder to help others, If you still have access to the videos
